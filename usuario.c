@@ -5,11 +5,10 @@
 
 void crearPlantilla()
 {
-    int i,n;
-    Equipo* equipo=obtenerEquipos();
-    n=7;
-    for(i=0;i<n;i++)
-    {
-        printf("\n%s",equipo[i].nombre);
-    }
+    char nombre[60];
+    puts("¿Como desea llamar a la plantilla?");
+    fgets(nombre, sizeof(nombre), stdin);
+    printf("%s",nombre);
+    Plantilla *plantillas=obtenerPlantillas();
+
 }
