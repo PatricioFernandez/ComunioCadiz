@@ -42,5 +42,10 @@ Jugador* obtenerJugadores();
 Usuario* obtenerUsuarios();
 Plantilla* obtenerPlantillas();
 Jug_plan* obtenerJugadoresPlantillas();
+int nUsuarios();
+int nEquipos();
+int nJugadores();
+int nPlantillas();
+int nJugPlants();
 
 #endif	/* FICHERO_H */
