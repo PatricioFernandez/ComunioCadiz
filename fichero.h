@@ -3,39 +3,44 @@
 
 // TIPOS
 typedef struct{
-    char codigo[2];
-    char nombre[20];
-    char tipo[13];
-    char login[5];
-    char pass[5];
-}usuario;
+    char codigo[3];
+    char nombre[21];
+    char tipo[14];
+    char login[6];
+    char pass[6];
+}Usuario;
 
 typedef struct{
-    char codigo[2];
-    char nombre[20];
-}equipo;
+    char codigo[3];
+    char nombre[21];
+}Equipo;
 
 typedef struct{
-    char codigo[2];
-    char codigo_equipo[2];
-    char nombre[20];
+    char codigo[3];
+    char codigo_equipo[3];
+    char nombre[21];
     int precio;
     int valoracion;
-}jugador;
+}Jugador;
 
 typedef struct{
-    char codigo_usuario[2];
-    char codigo[3];
-    char nombre[30];
+    char codigo_usuario[3];
+    char codigo[4];
+    char nombre[31];
     int presupuesto;
     int puntuacion;
-}plantilla;
+}Plantilla;
 
 typedef struct{
-    char codigo_jugador[2];
-    char codigo_plantilla[3];
-}jug_plan;
+    char codigo_jugador[3];
+    char codigo_plantilla[4];
+}Jug_plan;
 
 int empezar();
+Equipo* obtenerEquipos();
+Jugador* obtenerJugadores();
+Usuario* obtenerUsuarios();
+Plantilla* obtenerPlantillas();
+Jug_plan* obtenerJugadoresPlantillas();
 
 #endif	/* FICHERO_H */
