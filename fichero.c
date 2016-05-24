@@ -68,6 +68,8 @@ Equipo* obtenerEquipos(){
     }
     N_EQUIPO++;
     e = (Equipo*) realloc(e, N_EQUIPO*sizeof(Equipo));
+    cadena = (char*) realloc(cadena, (contadorChar+1)*sizeof(char));
+    cadena[contadorChar] = '\0';
     e[N_EQUIPO-1] = obtenerEquipo(cadena);
     contadorChar = 0;
     cadena = (char*) calloc(1, sizeof(char));
@@ -141,15 +143,17 @@ Usuario* obtenerUsuarios(){
 // Precondicion:
 // Poscondicion:
 Plantilla* obtenerPlantillas(){
-    FILE *FICHERO_PLANTILLA = fopen("plantillas.txt", "+");
+    FILE *FICHERO_PLANTILLA = fopen("plantillas.txt", "r");
     char c;
-    char *cadena = (char*) malloc(sizeof(char));
+    char *cadena = (char*) calloc(1,sizeof(char));
     int contadorChar = 0;
-    Plantilla *p = (Plantilla*) malloc(sizeof(Plantilla));
+    Plantilla *p = (Plantilla*) calloc(1,sizeof(Plantilla));
     while((c = fgetc(FICHERO_PLANTILLA))!=EOF){
         if(c == '\n'){
             N_PLANTILLA++;
             p = (Plantilla*) realloc(p, N_PLANTILLA*sizeof(Plantilla));
+            cadena = (char*) realloc(cadena, (contadorChar+1)*sizeof(char));
+            cadena[contadorChar] = '\0';
             p[N_PLANTILLA-1] = obtenerPlantilla(cadena);
             contadorChar = 0;
             cadena = (char*) calloc(1, sizeof(char));
@@ -161,6 +165,8 @@ Plantilla* obtenerPlantillas(){
     }
     N_PLANTILLA++;
     p = (Plantilla*) realloc(p, N_PLANTILLA*sizeof(Plantilla));
+    cadena = (char*) realloc(cadena, (contadorChar+1)*sizeof(char));
+    cadena[contadorChar] = '\0';
     p[N_PLANTILLA-1] = obtenerPlantilla(cadena);
     contadorChar = 0;
     cadena = (char*) calloc(1, sizeof(char));
@@ -197,6 +203,15 @@ Jug_plan* obtenerJugadoresPlantillas(){
     cadena = (char*) calloc(1, sizeof(char));
     fclose(FICHERO_JUG_PLAN);
     return p; 
+}
+
+void guardarDatosEquipo(Equipo* equipos, int elementos){
+    int i;
+    Equipo e;
+    FILE *FICHERO_EQUIPO = fopen("equipos.txt", "w");
+    for(i = 0; i < elementos; i++){
+        e = equipos[i];
+    }
 }
 
 int nUsuarios(){
