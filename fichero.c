@@ -4,51 +4,11 @@
 #include <stdlib.h>
 
 // CONSTANTES
-
-FILE *FICHERO_USUARIO;
-FILE *FICHERO_EQUIPO;
-FILE *FICHERO_JUGADOR;
-FILE *FICHERO_PLANTILLA;
-FILE *FICHERO_JUG_PLAN;
-
 int N_USUARIO = 0;
 int N_EQUIPO = 0;
 int N_JUGADOR = 0;
 int N_PLANTILLA = 0;
 int N_JUG_PLANT = 0;
-
-// FUNCIONES INTERNAS
-
-// Cabecera: int abrirFicheros()
-// Precondicion:
-// Poscondicion:
-int abrirFicheros(){
-    int res = 0;
-    FICHERO_USUARIO = fopen("usuarios.txt", "r+");
-    FICHERO_EQUIPO = fopen("equipos.txt", "r+");
-    FICHERO_JUGADOR = fopen("futbolistas.txt", "r+");
-    FICHERO_PLANTILLA = fopen("plantillas.txt", "r+");
-    FICHERO_JUG_PLAN = fopen("jugadores_plantillas.txt", "r+");
-    if(FICHERO_USUARIO == NULL
-            || FICHERO_EQUIPO == NULL
-            || FICHERO_JUGADOR == NULL
-            || FICHERO_PLANTILLA == NULL
-            || FICHERO_JUG_PLAN == NULL) res = 1;
-    return res;
-}
-
-// Cabecera: int abrirFicheros()
-// Precondicion:
-// Poscondicion:
-void cerrarFicheros(){
-    
-    // ANTES DE CERRAR GUARDAR LOS CAMBIOS
-    fclose(FICHERO_USUARIO);
-    fclose(FICHERO_EQUIPO);
-    fclose(FICHERO_JUGADOR);
-    fclose(FICHERO_PLANTILLA);
-    fclose(FICHERO_JUG_PLAN);
-}
 
 Equipo obtenerEquipo(char *cadena){
     Equipo e;
@@ -81,26 +41,22 @@ Jug_plan obtenerJugPlan(char* cadena){
 }
 // FUNCIONES PUBLICAS
 
-// Cabecera: int empezar()
-// Precondicion:
-// Poscondicion:
-int empezar(){
-    int res = abrirFicheros();
-    return res;
-}
 
 // Cabecera: Equipo* obtenerEquipos()
 // Precondicion:
 // Poscondicion:
 Equipo* obtenerEquipos(){
+    FILE *FICHERO_EQUIPO = fopen("equipos.txt", "r");
     char c;
-    char *cadena = (char*) malloc(sizeof(char));
+    char *cadena = (char*) calloc(1,sizeof(char));
     int contadorChar = 0;
-    Equipo *e = (Equipo*) malloc(sizeof(Equipo));
+    Equipo *e = (Equipo*) calloc(1,sizeof(Equipo));
     while((c = fgetc(FICHERO_EQUIPO))!=EOF){
         if(c == '\n'){
             N_EQUIPO++;
             e = (Equipo*) realloc(e, N_EQUIPO*sizeof(Equipo));
+            cadena = (char*) realloc(cadena, (contadorChar+1)*sizeof(char));
+            cadena[contadorChar] = '\0';
             e[N_EQUIPO-1] = obtenerEquipo(cadena);
             contadorChar = 0;
             cadena = (char*) calloc(1, sizeof(char));
@@ -115,6 +71,7 @@ Equipo* obtenerEquipos(){
     e[N_EQUIPO-1] = obtenerEquipo(cadena);
     contadorChar = 0;
     cadena = (char*) calloc(1, sizeof(char));
+    fclose(FICHERO_EQUIPO);
     return e;  
 }
 
@@ -122,6 +79,7 @@ Equipo* obtenerEquipos(){
 // Precondicion:
 // Poscondicion:
 Jugador* obtenerJugadores(){
+    FILE *FICHERO_JUGADOR = fopen("futbolistas.txt", "r");
     char c;
     char *cadena = (char*) malloc(sizeof(char));
     int contadorChar = 0;
@@ -144,6 +102,7 @@ Jugador* obtenerJugadores(){
     j[N_JUGADOR-1] = obtenerJugador(cadena);
     contadorChar = 0;
     cadena = (char*) calloc(1, sizeof(char));
+    fclose(FICHERO_JUGADOR);
     return j;  
 }
 
@@ -151,6 +110,7 @@ Jugador* obtenerJugadores(){
 // Precondicion:
 // Poscondicion:
 Usuario* obtenerUsuarios(){
+    FILE *FICHERO_USUARIO = fopen("usuarios.txt", "r");
     char c;
     char *cadena = (char*) malloc(sizeof(char));
     int contadorChar = 0;
@@ -173,6 +133,7 @@ Usuario* obtenerUsuarios(){
     u[N_USUARIO-1] = obtenerUsuario(cadena);
     contadorChar = 0;
     cadena = (char*) calloc(1, sizeof(char));
+    fclose(FICHERO_USUARIO);
     return u;  
 }
 
@@ -180,6 +141,7 @@ Usuario* obtenerUsuarios(){
 // Precondicion:
 // Poscondicion:
 Plantilla* obtenerPlantillas(){
+    FILE *FICHERO_PLANTILLA = fopen("plantillas.txt", "+");
     char c;
     char *cadena = (char*) malloc(sizeof(char));
     int contadorChar = 0;
@@ -202,6 +164,7 @@ Plantilla* obtenerPlantillas(){
     p[N_PLANTILLA-1] = obtenerPlantilla(cadena);
     contadorChar = 0;
     cadena = (char*) calloc(1, sizeof(char));
+    fclose(FICHERO_PLANTILLA);
     return p; 
 }
 
@@ -209,6 +172,7 @@ Plantilla* obtenerPlantillas(){
 // Precondicion:
 // Poscondicion:
 Jug_plan* obtenerJugadoresPlantillas(){
+    FILE *FICHERO_JUG_PLAN = fopen("jugadores_plantillas.txt", "r");
     char c;
     char *cadena = (char*) malloc(sizeof(char));
     int contadorChar = 0;
@@ -231,6 +195,7 @@ Jug_plan* obtenerJugadoresPlantillas(){
     p[N_JUG_PLANT-1] = obtenerJugPlan(cadena);
     contadorChar = 0;
     cadena = (char*) calloc(1, sizeof(char));
+    fclose(FICHERO_JUG_PLAN);
     return p; 
 }
 
@@ -252,8 +217,4 @@ int nPlantillas(){
 
 int nJugPlants(){
     return N_JUG_PLANT;
-}
-
-void guardarDatosEquipos(Equipo* equipos){
-    
 }
