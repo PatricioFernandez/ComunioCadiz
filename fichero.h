@@ -36,12 +36,23 @@ typedef struct{
     char codigo_plantilla[4];
 }Jug_plan;
 
-int empezar();
+typedef struct{
+    char campo[31];
+    int valor;
+}Conf;
+
 Equipo* obtenerEquipos();
 Jugador* obtenerJugadores();
 Usuario* obtenerUsuarios();
 Plantilla* obtenerPlantillas();
 Jug_plan* obtenerJugadoresPlantillas();
+Conf* obtenerConfiguraciones();
+void guardarDatosEquipo(Equipo* equipos, int elementos);
+void guardarDatosJugadores(Jugador* jugadores, int elementos);
+void guardarDatosUsuario(Usuario* usuarios, int elementos);
+void guardarDatosPlantilla(Plantilla* plantillas, int elementos);
+void guardarDatosJugadorPlantilla(Jug_plan* jug_plan, int elementos);
+void guardarDatosConf(Conf* conf, int elementos);
 int nUsuarios();
 int nEquipos();
 int nJugadores();
