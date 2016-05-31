@@ -5,6 +5,8 @@
 
 
 void tasar(){
+    Conf* configuracion=obtenerConfiguraciones();
+    printf("%i ",configuracion[1].valor);
 }
 
 void imprimirListaJugadores(Jugador *jugadores,int tamano){
