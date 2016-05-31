@@ -24,10 +24,17 @@ void tasar(Jugador *jugadores){
             int sehaencontrado=comprobarQueNoEsta(codigo,codigosSelect,contadorJugadores);
             if(sehaencontrado==0)
             {
-                codigosSelect[contadorJugadores-1]=codigo;
-                contadorJugadores++;
-                valor=valor-precio;
+                if(valor-precio>=0)
+                {
+                    codigosSelect[contadorJugadores-1]=codigo;
+                    contadorJugadores++;
+                    valor=valor-precio;
                 }
+                else{
+                    printf("No tienes dinero para ficharle \n",codigo);
+                }
+
+            }
             else{
                 printf("Ya tienes al jugador %i en tu plantilla \n",codigo);
             }
