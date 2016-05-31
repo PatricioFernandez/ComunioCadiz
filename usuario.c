@@ -41,7 +41,7 @@ void tasar(Jugador *jugadores){
 
 
         printf("Tienes %i euros \n",valor);
-        puts("Introduce n si no desea seguir fichando ");
+        puts("Introduce n si no desea seguir fichando en caso contrario introduzca otro caracter ");
         fflush(stdin);
         eleccion=getchar();
 
@@ -89,6 +89,7 @@ void imprimirListaJugadores(Jugador *jugadores,int tamano){
 
 void crearPlantilla()
 {
+    int cont;
     char nombre[60];
     puts("¿Como desea llamar a la plantilla?");
     fgets(nombre, sizeof(nombre), stdin);
@@ -96,24 +97,24 @@ void crearPlantilla()
     Plantilla *plantillas=obtenerPlantillas();
     int numero= nPlantillas();
 
-    char codigoPlantilla[3];
-    char numeroEnChar=numero+49;
+    char codigoPlantilla[4];
+    int encontrado;
 
 
-    if(numero+1>10 && numero+1<100)
-    {
-         strcpy(codigoPlantilla,"0");
-
-    }
-    else if(numero+1>100)
-    {
-         strcpy(codigoPlantilla,"");
-    }
-    else{
-         strcpy(codigoPlantilla,"00");
-         codigoPlantilla[2]=numeroEnChar;
-    }
-
+    do{
+        encontrado=0;
+        puts("Introduce el codigo de la plantilla:");
+        fgets(codigoPlantilla, sizeof(codigoPlantilla), stdin);
+        for(cont=0;cont<numero;cont++)
+        {
+            if(strcmp(codigoPlantilla,plantillas[cont].codigo)==0)
+            {
+                puts("Ese codigo ya existe Introduzca otro:");
+                encontrado=1;
+            }
+        }
+        fflush(stdin);
+    }while(encontrado==1);
 
 
     strcpy(plantillas[numero+1].codigo_usuario,"01");
