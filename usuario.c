@@ -4,9 +4,54 @@
 #include "fichero.h"
 
 
-void tasar(){
+void tasar(Jugador *jugadores){
     Conf* configuracion=obtenerConfiguraciones();
-    printf("%i ",configuracion[1].valor);
+    int valor;
+    int codigo;
+    int contadorJugadores=1;
+    int *codigosSelect = (int*) malloc(sizeof(int));
+    char eleccion;
+
+    valor=configuracion[1].valor;
+    do{
+
+
+            printf("Introduce el codigo del jugador que deseas fichar ");
+            fflush(stdin);
+            scanf("%i",&codigo);
+            int precio=jugadores[codigo-1].precio;
+            codigosSelect = (int*) realloc(codigosSelect, (contadorJugadores)*sizeof(int));
+            int sehaencontrado=comprobarQueNoEsta(codigo,codigosSelect,contadorJugadores);
+            if(sehaencontrado==0)
+            {
+                codigosSelect[contadorJugadores-1]=codigo;
+                contadorJugadores++;
+                valor=valor-precio;
+                }
+            else{
+                printf("Ya tienes al jugador %i en tu plantilla \n",codigo);
+            }
+
+
+        printf("Tienes %i euros \n",valor);
+        puts("Introduce n si no desea seguir fichando ");
+        fflush(stdin);
+        eleccion=getchar();
+
+    }while(valor>0 && eleccion!='n');
+
+}
+
+int comprobarQueNoEsta(int codigo,int *vector,int tam)
+{
+    int i,sehaencontrado=0;
+    for(i=0;i<tam;i++)
+    {
+        if(codigo==vector[i])
+            sehaencontrado=1;
+    }
+
+    return sehaencontrado;
 }
 
 void imprimirListaJugadores(Jugador *jugadores,int tamano){
@@ -16,10 +61,11 @@ void imprimirListaJugadores(Jugador *jugadores,int tamano){
     tamanoequipos=nEquipos();
     int codigo_equipo;
     puts("---JUGADORES---");
-    puts("Codigo Equipo Nombre Precio Valoracion");
+    puts("Codigo Nombre Equipo Precio Valoracion");
     for(contador=0;contador<tamano;contador++){
 
         printf("%s ",jugadores[contador].codigo);
+        printf("%s ",jugadores[contador].nombre);
         codigo_equipo=jugadores[contador].codigo_equipo;
             for(contadorEq=0;contadorEq<tamanoequipos;contadorEq++)
             {
@@ -27,7 +73,6 @@ void imprimirListaJugadores(Jugador *jugadores,int tamano){
                         printf("%s ",equipos[contadorEq].nombre);
             }
         contadorEq=0;
-        printf("%s ",jugadores[contador].nombre);
         printf("%i ",jugadores[contador].precio);
         printf("%i ",jugadores[contador].valoracion);
         puts("");
@@ -71,6 +116,7 @@ void crearPlantilla()
     Jugador *jugadores=obtenerJugadores();
     int numeroJugadores=nJugadores();
     imprimirListaJugadores(jugadores,numeroJugadores);
+    tasar(jugadores);
 
 }
 
