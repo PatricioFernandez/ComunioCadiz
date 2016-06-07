@@ -1,0 +1,221 @@
+01-01-Gorka Iraizoz-2-0
+02-01-Eneko Boveda-2-0
+03-01-Gorka Elustondo-2-0
+04-01-Aymeric Laporte-25-0
+05-01-Javi Eraso-2-0
+06-01-Mikel San Jose-8-0
+07-01-Benat Etxebarria-6-0
+08-01-Ander Iturraspe-8-0
+09-01-Oscar de Marcos-8-0
+10-01-Ibai Gomez-3-0
+11-01-Iago Herrerín-2-0
+01-02-Miguel Moya-5-0
+02-02-Diego Godin-35-0
+03-02-Filipe Luis-15-0
+04-02-Tiago-2-0
+05-02-Koke-50-0
+06-02-Antoine Griezmann-60-0
+07-02-Matias Kranevitter-7-0
+08-02-Fernando Torres-7-0
+09-02-Oliver Torres-14-0
+10-02-Augusto Fernandez-6-0
+11-02-Jan Oblak-25-0
+01-03-Marc Andre ter Stegen-15-0
+02-03-Douglas-1-0
+03-03-Gerard Pique-40-0
+04-03-Ivan Rakitic-45-0
+05-03-Sergio Busquets-50-0
+06-03-Dani Alves-9-0
+07-03-Arda Turan-35-0
+08-03-Andres Iniesta-35-0
+09-03-Luis Suarez-90-0
+10-03-Lionel Messi-120-0
+11-03-Neymar-100-0
+01-04-Cristiano Piccini-1-0
+02-04-Daniel Gimenez-1-0
+03-04-Francisco Molinero-3-0
+04-04-Bruno Gonzalez-3-0
+05-04-Froued Kadir-1-0
+06-04-Francisco Varela-1-0
+07-04-Joaquin-1-0
+08-04-Charly Musonda-2-0
+09-04-Ricky Van-3-0
+10-04-Dani Ceballos-5-0
+11-04-Juan Vargas-3-0
+01-05-Serigio Alvarez-4-0
+02-05-Hugo Mallo-6-0
+03-05-Andreu Fontas-4-0
+04-05-Marcelo Diaz-3-0
+05-05-Nemanja Radoja-4-0
+06-05-Theo Bongonda-3-0
+07-05-Pablo Hernandez-4-0
+08-05-Iago Aspas-7-0
+09-05-Nolito-15-0
+10-05-John Guidetti-4-0
+11-05-Claudio Beauvue-5-0
+01-06-German Lux-1-0
+02-06-Manuel Pablo-1-0
+03-06-Fernando Navarro-2-0
+04-06-Alex Bergatiños-1-0
+05-06-Pedro Mosquera-4-0
+06-06-Cani-1-0
+07-06-Lucas-10-0
+08-06-Oriol Riera-2-0
+09-06-Juan Rodriguez-2-0
+10-06-Juanfran-4-0	
+11-06-Sidnei-4-0
+01-07-Xabi Irureta-2-0
+02-07-Aleksandar Pantic-2-0
+03-07-Mauro dos santos-4-0
+04-07-Keko-4-0
+05-07-Sergi Enrich-4-0
+06-07-Borja Baston-4-0
+07-07-Ander Capa-4-0
+08-07-Dani Garcia-3-0
+09-07-Gonzalo Escalante3-0
+10-07-Saul Berjon-3-0
+11-07-Takashi Inui-3-0
+01-08-Gierdrius Arlauskis-2-0
+02-08-Roberto Correa-1-0
+03-08-Ruben Duarte-2-0
+04-08-Victor Sanchez-4-0
+05-08-Enzo Roco-3-0
+06-08-Gerard Moreno-3-0
+07-08-Salva Sevilla-2-0
+08-08-Burgui-1-0
+09-08-Abraham Gonzalez-2-0
+10-08-Paco Montanes-3-0
+11-08-Papakouli Diop-3-0
+01-09-Balazs Megyeri-2-0
+02-09-Alvaro Pereira-2-0
+03-09-Roberto Lago-1-0
+04-09-Emiliano Velazquez-3-0
+05-09-Santiago Vergini-3-0
+06-09-Cala-1-0
+07-09-Henok Goitom-1-0
+08-09-Mehdi Lacen-3-0
+09-09-Alvaro Vazquez-3-0
+10-09-Pablo Sarabia-5-0
+11-09-Stefan Scepovic-2-0
+01-10-Ivan Kelava-1-0
+02-10-Youssef El Arabi-6-0
+03-10-David Lomban-3-0
+04-10-Cristiano Biraghi-3-0
+05-10-Fran Rico-3-0
+06-10-Diego Mainz-1-0
+07-10-Jean Sylvain Babin-4-0
+08-10-Javi Marquez-3-0
+09-10-Isaac Success-3-0
+10-10-Doria-2-0
+11-10-Miguel Lopes-3-0
+01-11-Javi Castellano-1-0
+02-11-Raul Lizoain-5-0
+03-11-David Simon-6-0
+04-11-Mauricio Lemos-1-0
+05-11-Vicente Gomez-2-0
+06-11-David Garcia-2-0
+07-11-Angel Lopez-3-0
+08-11-Nauzet Aleman-1-0
+09-11-William Jose-2-0
+10-11-Sergio Araujo-4-0
+11-11-Momo-4-0
+01-12-Ruben-1-0
+02-12-Ivan Lopez-1-0
+03-12-David Navarro-1-0
+04-12-Simao-2-0
+05-12-Victor Camarasa-3-0
+06-12-Verza-3-0
+07-12-Jefferson Lerma-2-0
+08-12-Mauticio Cuero-4-0
+09-12-Carl Medjani-2-0
+10-12-Angel Trujillo-1-0
+11-12-Jordi Xumetra-1-0
+01-13-Carlos Kameni-5-0
+02-13-Raul Albentosa-2-0
+03-13-Weligton-1-0
+04-13-Miguel Cifuentes-1-0
+05-13-Chory Castro-3-0
+06-13-Ignacio Camacho-10-0
+07-13-Juankar-2-0
+08-13-Ikechukwu Uche-2-0
+09-13-Charles-3-0
+10-13-Ricardo Horta-2-0
+11-13-Christian Atsu-1-0
+01-14-Tono-4-0
+02-14-David Cobeno-2-0
+03-14-Tito-2-0
+04-14-Nacho Martinez-2-0
+05-14-Antonio Amaya-2-0
+06-14-Jose Antonio Dorado-3-0
+07-14-Manuel Irruta-2-0
+08-14-Miku-3-0
+09-14-Raul Baena-3-0
+10-14-Manucho-2-0
+11-14-Roberto Trashorras-3-0
+01-15-Keylor Navas-18-0
+02-15-Raphael Varane-30-0
+03-15-Pepe-6-0
+04-15-Sergio Ramos-40-0
+05-15-Nacho Fernandez-5-0
+06-15-Cristiano Ronaldo-110-0
+07-15-Toni Kros-50-0
+08-15-Karim Benzema-60-0
+09-15-James Rodriguez-60-0
+10-15-Gareth Bale-80-0
+11-15-Marcelo-30-0
+01-16-Geronimo Rulli-6-0
+02-16-Carlos Martinez-2-0
+03-16-Mikel Gonzalez-2-0
+04-16-Asier Illarramendi-15-0
+05-16-Markel Bergara-3-0
+06-16-Bruma-5-0
+07-16-Esteban Granero-4-0
+08-16-Imanol Agirretxe-4-0
+09-16-Xabi Prieto-5-0
+10-16-Carlos Vela-15-0
+11-16-Oier Olazabal-1-0
+11-15-Casemiro-16-0
+01-17-Sergio Rico-10-0
+02-17-Benoit Tremoulinas-7-0
+03-17-Adil Rami-7-0
+04-17-Grzegorz Krychowiak-25-0
+05-17-Timothee Kolodziejczak-7-0
+06-17-Daniel Carrico-7-0
+07-17-Michael Krohn-Dehli-4-0
+08-17-Vicente Iborra-8-0
+09-17-Kevin Gameiro-15-0
+10-17-Jose Antonio Reyes-2-0
+11-17-Juan Perez-1-0
+01-18-Ivan Cuellar-1-0
+02-18-Luis Hernandez-3-0
+03-18-Alex Mendez-1-0
+04-18-Igor Lichnovsky-1-0
+05-18-Bernardo Espinosa-3-0
+06-18-Sergio Alvarez-3-0
+07-18-Alex Barrera-1-0
+08-18-Nacho Caeses-2-0
+09-18-Alberto Lora-3-0
+10-18-Alberto Garcia-1-0
+11-18-Roberto Canella-1-0
+01-19-Diego Alves-6-0
+02-19-Joao Cancelo-10-0
+03-19-Ruben Vezo-2-0
+04-19-Aderlan Santos-7-0
+05-19-Shkordan Mustafi-20-0
+06-19-Guilherme Siqueira-4-0
+07-19-Alvaro Negredo-10-0
+08-19-Sofaine Feghouli-15-0
+09-19-Paco Alcacer-25-0
+10-19-Dani Parejo-18-0
+11-19-Pablo Piatti-7-0
+01-20-Sergio Asenjo-4-0
+02-20-Mario Gaspar-10-0
+03-20-Tomas Pina-4-0
+04-20-Mateo Musacchio-9-0
+05-20-Victor Ruiz-6-0
+06-20-Samuel-4-0
+07-20-Jonathan dos Santos-6-0
+08-20-Roberto Soldado-16-0
+09-20-Jaume Costa-6-0
+10-20-Manu Trigueros-8-0
+11-20-Denis Suarez-12-0
