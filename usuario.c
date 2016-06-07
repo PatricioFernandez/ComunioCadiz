@@ -145,8 +145,15 @@ void crearPlantilla(char *codigo)
     int presupuesto;
     imprimirListaJugadores(jugadores,numeroJugadores);
     tasar(jugadores,codigoPlantilla,&presupuesto,&valoracion);
-    plantillas[numero+1].presupuesto=valor;
 
+    plantillas[numero+1].presupuesto=presupuesto;
+    plantillas[numero+1].puntuacion=valoracion;
+
+    int elementos=numero+1;
+
+    printf("presupuesto %i, valoracion %i",plantillas[numero+1].presupuesto,plantillas[numero+1].puntuacion);
+
+    guardarDatosPlantilla(plantillas,elementos);
 }
 
 
