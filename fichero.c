@@ -10,36 +10,49 @@ int N_JUGADOR = 0;
 int N_PLANTILLA = 0;
 int N_JUG_PLANT = 0;
 
+// Cabecera: Equipo obtenerEquipo(char *cadena)
+// Precondicion:
+// Poscondicion:
 Equipo obtenerEquipo(char *cadena){
     Equipo e;
     sscanf(cadena,"%s%s", e.codigo, e.nombre);
     return e;
 }
-
+// Cabecera: Jugador obtenerJugador(char *cadena)
+// Precondicion:
+// Poscondicion:
 Jugador obtenerJugador(char *cadena){
     Jugador j;
     sscanf(cadena,"%s%s%s%d%d", j.codigo, j.codigo_equipo, j.nombre, &j.precio, &j.valoracion);
     return j;
 }
-
+// Cabecera: Usuario obtenerUsuario(char *cadena)
+// Precondicion:
+// Poscondicion:
 Usuario obtenerUsuario(char *cadena){
     Usuario u;
-    sscanf(cadena,"%s%s%s%s%s", u.codigo, u.login, u.nombre, u.pass, u.tipo);
+    sscanf(cadena,"%s%s%s%s%s", u.codigo, u.nombre, u.tipo, u.login, u.pass);
     return u;
 }
-
+// Cabecera: Plantilla obtenerPlantilla(char* cadena)
+// Precondicion:
+// Poscondicion:
 Plantilla obtenerPlantilla(char* cadena){
     Plantilla p;
     sscanf(cadena, "%s%s%s%d%d", p.codigo_usuario, p.codigo, p.nombre, &p.presupuesto, &p.puntuacion);
     return p;
 }
-
+// Cabecera: Jug_plan obtenerJugPlan(char* cadena)
+// Precondicion:
+// Poscondicion:
 Jug_plan obtenerJugPlan(char* cadena){
     Jug_plan jp;
     sscanf(cadena, "%s%s", jp.codigo_jugador, jp.codigo_plantilla);
     return jp;
 }
-
+// Cabecera: Conf obtenerConfiguracion(char* cadena)
+// Precondicion:
+// Poscondicion:
 Conf obtenerConfiguracion(char* cadena){
     Conf c;
     sscanf(cadena, "%s%d", c.campo, &c.valor);
@@ -52,6 +65,7 @@ Conf obtenerConfiguracion(char* cadena){
 // Precondicion:
 // Poscondicion:
 Equipo* obtenerEquipos(){
+    N_EQUIPO = 0;
     FILE *FICHERO_EQUIPO = fopen("equipos.txt", "r");
     char c;
     char *cadena = (char*) calloc(1,sizeof(char));
@@ -87,6 +101,7 @@ Equipo* obtenerEquipos(){
 // Precondicion:
 // Poscondicion:
 Jugador* obtenerJugadores(){
+    N_JUGADOR = 0;
     FILE *FICHERO_JUGADOR = fopen("futbolistas.txt", "r");
     char c;
     char *cadena = (char*) malloc(sizeof(char));
@@ -118,6 +133,7 @@ Jugador* obtenerJugadores(){
 // Precondicion:
 // Poscondicion:
 Usuario* obtenerUsuarios(){
+    N_USUARIO = 0;
     FILE *FICHERO_USUARIO = fopen("usuarios.txt", "r");
     char c;
     char *cadena = (char*) malloc(sizeof(char));
@@ -149,6 +165,7 @@ Usuario* obtenerUsuarios(){
 // Precondicion:
 // Poscondicion:
 Plantilla* obtenerPlantillas(){
+    N_PLANTILLA = 0;
     FILE *FICHERO_PLANTILLA = fopen("plantillas.txt", "r");
     char c;
     char *cadena = (char*) calloc(1,sizeof(char));
@@ -184,6 +201,7 @@ Plantilla* obtenerPlantillas(){
 // Precondicion:
 // Poscondicion:
 Jug_plan* obtenerJugadoresPlantillas(){
+    N_JUG_PLANT = 0;
     FILE *FICHERO_JUG_PLAN = fopen("jugadores_plantillas.txt", "r");
     char c;
     char *cadena = (char*) malloc(sizeof(char));
@@ -210,7 +228,9 @@ Jug_plan* obtenerJugadoresPlantillas(){
     fclose(FICHERO_JUG_PLAN);
     return p; 
 }
-
+// Cabecera: Conf* obtenerConfiguraciones()
+// Precondicion:
+// Poscondicion:
 Conf* obtenerConfiguraciones(){
     FILE *FICHERO_CONF = fopen("configuracion.txt", "r");
     char c;
@@ -239,7 +259,9 @@ Conf* obtenerConfiguraciones(){
     fclose(FICHERO_CONF);
     return p; 
 }
-
+// Cabecera: void guardarDatosEquipo(Equipo* equipos, int elementos)
+// Precondicion:
+// Poscondicion:
 void guardarDatosEquipo(Equipo* equipos, int elementos){
     int i;
     Equipo e;
@@ -251,11 +273,12 @@ void guardarDatosEquipo(Equipo* equipos, int elementos){
         }else{
             fprintf(FICHERO_EQUIPO, "\n%s %s", e.codigo, e.nombre);
         }
-        
     }
     fclose(FICHERO_EQUIPO);
 }
-
+// Cabecera: void guardarDatosJugador(Jugador* jugadores, int elementos)
+// Precondicion:
+// Poscondicion:
 void guardarDatosJugador(Jugador* jugadores, int elementos){
     int i;
     Jugador j;
@@ -270,7 +293,9 @@ void guardarDatosJugador(Jugador* jugadores, int elementos){
     }
     fclose(FICHERO_JUGADOR);
 }
-
+// Cabecera: void guardarDatosUsuario(Usuario* usuarios, int elementos)
+// Precondicion:
+// Poscondicion:
 void guardarDatosUsuario(Usuario* usuarios, int elementos){
     int i;
     Usuario u;
@@ -285,7 +310,9 @@ void guardarDatosUsuario(Usuario* usuarios, int elementos){
     }
     fclose(FICHERO_USUARIO);
 }
-
+// Cabecera: void guardarDatosPlantilla(Plantilla* plantillas, int elementos)
+// Precondicion:
+// Poscondicion:
 void guardarDatosPlantilla(Plantilla* plantillas, int elementos){
     int i;
     Plantilla p;
@@ -300,7 +327,9 @@ void guardarDatosPlantilla(Plantilla* plantillas, int elementos){
     }
     fclose(FICHERO_PLANTILLA);
 }
-
+// Cabecera: void guardarDatosJugadorPlantilla(Jug_plan* jug_plan, int elementos)
+// Precondicion:
+// Poscondicion:
 void guardarDatosJugadorPlantilla(Jug_plan* jug_plan, int elementos){
     int i;
     Jug_plan p;
@@ -315,7 +344,9 @@ void guardarDatosJugadorPlantilla(Jug_plan* jug_plan, int elementos){
     }
     fclose(FICHERO_JUG_PLAN);
 }
-
+// Cabecera: void guardarDatosConf(Conf* conf, int elementos)
+// Precondicion:
+// Poscondicion:
 void guardarDatosConf(Conf* conf, int elementos){
     int i;
     Conf p;
@@ -323,30 +354,56 @@ void guardarDatosConf(Conf* conf, int elementos){
     for(i = 0; i < elementos; i++){
         p = conf[i];
         if(i == 0){
-            fprintf(FICHERO_CONF, "%s %s", p.campo, p.valor);
+            fprintf(FICHERO_CONF, "%s %d", p.campo, p.valor);
         }else{
-            fprintf(FICHERO_CONF, "\n%s %s", p.campo, p.valor);
+            fprintf(FICHERO_CONF, "\n%s %d", p.campo, p.valor);
         }
     }
     fclose(FICHERO_CONF);
 }
-
+// Cabecera: int nUsuarios()
+// Precondicion:
+// Poscondicion:
 int nUsuarios(){
     return N_USUARIO;
 }
-
+// Cabecera: int nEquipos()
+// Precondicion:
+// Poscondicion:
 int nEquipos(){
     return N_EQUIPO;
 }
-
+// Cabecera: int nJugadores()
+// Precondicion:
+// Poscondicion:
 int nJugadores(){
     return N_JUGADOR;
 }
-
+// Cabecera: int nPlantillas()
+// Precondicion:
+// Poscondicion:
 int nPlantillas(){
     return N_PLANTILLA;
 }
-
+// Cabecera: int nJugPlants()
+// Precondicion:
+// Poscondicion:
 int nJugPlants(){
     return N_JUG_PLANT;
+}
+
+char* loguear(char* logUsuario, char* passUsuario){
+    fpurge(stdin);
+    Usuario *u = obtenerUsuarios();
+    int dimension = nUsuarios();
+    int cont = 0;
+    char* codigo;
+    strcpy(codigo, "00");
+    while(cont < dimension && strcmp(codigo, "00") == 0){
+        if(strcmp(logUsuario, u[cont].login) == 0 && strcmp(passUsuario, u[cont].pass)){
+            strcpy(codigo, u[cont].codigo);
+        }
+        cont++;
+    }
+    return codigo;
 }

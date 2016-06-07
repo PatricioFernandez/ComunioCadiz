@@ -12,7 +12,15 @@ void agregarJugador();
 void eliminarEquipo();
 void eliminarJugador();
 void menuUsuarios();
+void listarUsuarios();
+void modificarUsuario();
+void agregarUsuario();
+void eliminarUsuario();
 void menuConfiguracion();
+void verConfiguracion();
+void cambiarMaxEquipos();
+void cambiarPresupuestoDef();
+void cambiarMaxJugadores();
 void menuEquipos();
 
 void menuAdministrador(){
@@ -22,6 +30,9 @@ void menuAdministrador(){
     printf("2.- Usuarios\n");
     printf("3.- Configuracion\n");
     printf("4.- Salir del programa\n");
+    
+    fpurge(stdin);
+    fflush(stdin);
     
     char opcion = getchar();
     
@@ -76,7 +87,7 @@ void listarEquipos(){
     Equipo *e = obtenerEquipos();
     int dimension = nEquipos();
     int i;
-    puts("\n LISTANDO EQUIPOS");
+    puts("\n <### LISTANDO EQUIPOS ###>");
     for(i = 0; i < dimension; i++){
         printf("%s %s\n", e[i].codigo, e[i].nombre);
     }
@@ -84,24 +95,24 @@ void listarEquipos(){
 }
 
 void modificarEquipo(){
-    puts("Introduce codigo de equipo:");
-    fflush(stdin);
-    fpurge(stdin);
     char codigo[3];
-    fgets(codigo, 3, stdin);
-    puts("Introduce nuevo nombre para el equipo:");
-    fflush(stdin);
-    fpurge(stdin);
     char nombre[21];
+    fpurge(stdin);
+    puts("Introduce codigo");
+    fgets(codigo, 3, stdin);
+    fpurge(stdin);
+    puts("Introduce nombre");
     fgets(nombre, 21, stdin);
+    strtok(nombre, "\n");
     Equipo *e = obtenerEquipos();
     int dimension = nEquipos();
     int i;
     for(i = 0; i < dimension; i++){
-        if(strcmp(e[i].codigo, codigo) == 0)
+        if(strcmp(e[i].codigo, codigo) == 0){
             strcpy(e[i].nombre, nombre);
+        }
     }
-    guardarDatosEquipo(e, dimension);
+    guardarDatosEquipo(e, i);
     menuEquipos();
 }
 
@@ -126,9 +137,109 @@ void eliminarJugador(){
 }
 
 void menuUsuarios(){
+    printf("\n USUARIOS \n");
+    puts("");
+    printf("1.- Listar\n");
+    printf("2.- Modificar usuario\n");
+    printf("3.- Agregar usuario\n");
+    printf("4.- Eliminar usuario\n");
+    printf("5.- Volver\n");
+    
+    fpurge(stdin);
+    fflush(stdin);
+    
+    char opcion = getchar();
+    
+    if(opcion == '1'){
+        listarUsuarios();
+    }else if(opcion == '2'){
+        modificarUsuario();
+    }else if(opcion == '3'){
+        agregarUsuario();
+    }else if(opcion == '4'){
+        eliminarUsuario();
+    }else if(opcion == '5'){
+        menuAdministrador();
+    }
+}
+
+void listarUsuarios(){
+    
+}
+
+void modificarUsuario(){
+    
+}
+
+void agregarUsuario(){
+    
+}
+
+void eliminarUsuario(){
     
 }
 
 void menuConfiguracion(){
+    printf("\n Configuracion \n");
+    puts("");
+    printf("1.- Ver configuracion actual\n");
+    printf("2.- Cambiar equipos maximos\n");
+    printf("3.- Cambiar presupuesto por defecto\n");
+    printf("4.- Cambiar jugadores maximos\n");
+    printf("5.- Volver\n");
     
+    fpurge(stdin);
+    fflush(stdin);
+    
+    char opcion = getchar();
+    
+    if(opcion == '1'){
+        verConfiguracion();
+    }else if(opcion == '2'){
+        cambiarMaxEquipos();
+    }else if(opcion == '3'){
+        cambiarPresupuestoDef();
+    }else if(opcion == '4'){
+        cambiarMaxJugadores();
+    }else if(opcion == '5'){
+        menuAdministrador();
+    }
+}
+
+void verConfiguracion(){
+    Conf *config = obtenerConfiguraciones();
+    printf("Numero maximo de equipos: %d\n", config[0].valor);
+    printf("Presupuesto por defecto: %d\n", config[1].valor);
+    printf("Numero maximo de jugadores: %d\n", config[2].valor);
+    menuConfiguracion();
+}
+
+void cambiarMaxEquipos(){
+    Conf *config = obtenerConfiguraciones();
+    puts("Introduce numero maximo de equipos:");
+    fpurge(stdin);
+    fflush(stdin);
+    scanf("%d", &config[0].valor);
+    guardarDatosConf(config, 3);
+    menuConfiguracion();
+}
+
+void cambiarPresupuestoDef(){
+    Conf *config = obtenerConfiguraciones();
+    puts("Introduce presupuesto por defecto:");
+    fpurge(stdin);
+    fflush(stdin);
+    scanf("%d", &config[1].valor);
+    guardarDatosConf(config, 3);
+    menuConfiguracion();
+}
+
+void cambiarMaxJugadores(){
+    Conf *config = obtenerConfiguraciones();
+    puts("Introduce numero maximo de jugadores:");
+    fpurge(stdin);
+    fflush(stdin);
+    scanf("%d", &config[2].valor);
+    guardarDatosConf(config, 3);
+    menuConfiguracion();
 }

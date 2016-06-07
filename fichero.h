@@ -53,6 +53,7 @@ void guardarDatosUsuario(Usuario* usuarios, int elementos);
 void guardarDatosPlantilla(Plantilla* plantillas, int elementos);
 void guardarDatosJugadorPlantilla(Jug_plan* jug_plan, int elementos);
 void guardarDatosConf(Conf* conf, int elementos);
+char* loguear(char* logUsuario, char* passUsuario);
 int nUsuarios();
 int nEquipos();
 int nJugadores();
