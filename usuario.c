@@ -4,7 +4,7 @@
 #include "fichero.h"
 
 
-void tasar(Jugador *jugadores,char *codigoPlantilla){
+void tasar(Jugador *jugadores,char *codigoPlantilla,int *presupuesto,int *valoracion){
     Conf* configuracion=obtenerConfiguraciones();
     int valor;
     char codigo[3];
@@ -13,7 +13,7 @@ void tasar(Jugador *jugadores,char *codigoPlantilla){
     int *codigosSelect = (int*) malloc(sizeof(int));
     char eleccion;
     Jug_plan *jug_plan= (Jug_plan*) malloc(sizeof(Jug_plan));
-
+    *valoracion=0;
     fflush(stdin);
 
     valor=configuracion[1].valor;
@@ -26,6 +26,7 @@ void tasar(Jugador *jugadores,char *codigoPlantilla){
             codigoEnNumero=atoi(codigo);
 
             int precio=jugadores[codigoEnNumero-1].precio;
+            *valoracion=jugadores[codigoEnNumero-1].valoracion;
             codigosSelect = (int*) realloc(codigosSelect, (contadorJugadores)*sizeof(int));
             jug_plan = (Jug_plan*) realloc(jug_plan, (contadorJugadores)*sizeof(Jug_plan));
 
@@ -58,7 +59,10 @@ void tasar(Jugador *jugadores,char *codigoPlantilla){
 
     }while(valor>0 && eleccion!='n');
 
+
     guardarDatosJugadorPlantilla(jug_plan,contadorJugadores-1);
+    *presupuesto=valor;
+
 
 }
 
@@ -104,7 +108,8 @@ void crearPlantilla(char *codigo)
 {
     int cont;
     char nombre[60];
-    puts("Â¿Como desea llamar a la plantilla?");
+    int valor;
+    puts("¿Como desea llamar a la plantilla?");
     fgets(nombre, sizeof(nombre), stdin);
 
     Plantilla *plantillas=obtenerPlantillas();
@@ -136,35 +141,13 @@ void crearPlantilla(char *codigo)
 
     Jugador *jugadores=obtenerJugadores();
     int numeroJugadores=nJugadores();
-
+    int valoracion;
+    int presupuesto;
     imprimirListaJugadores(jugadores,numeroJugadores);
-    tasar(jugadores,codigoPlantilla);
+    tasar(jugadores,codigoPlantilla,&presupuesto,&valoracion);
+    plantillas[numero+1].presupuesto=valor;
 
 }
 
-void BorrarPlantilla(){
-int cont;
-Plantilla *plantillas=obtenerPlantillas();
-    int numero= nPlantillas();
-    char codigoPlantilla[4];
-    int encontrado;
 
- do{
-        encontrado=0;
-        puts("Introduce el codigo de la plantilla:");
-        fgets(codigoPlantilla, sizeof(codigoPlantilla), stdin);
-        for(cont=0;cont<numero;cont++)
-        {
-            if(strcmp(codigoPlantilla,plantillas[cont].codigo)==0)
-            {
-                strcpy(plantillas[cont].codigo,"xx");
-                encontrado=1;
-            }
-        }
-        fflush(stdin);
-    }while(encontrado==0);
-guardarDatosPlantilla(plantillas,numero);
-
-
-}
 
