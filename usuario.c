@@ -109,7 +109,7 @@ void crearPlantilla(char *codigo)
     int cont;
     char nombre[60];
     int valor;
-    puts("¿Como desea llamar a la plantilla?");
+    puts("Â¿Como desea llamar a la plantilla?");
     fgets(nombre, sizeof(nombre), stdin);
 
     Plantilla *plantillas=obtenerPlantillas();
@@ -119,7 +119,7 @@ void crearPlantilla(char *codigo)
     int encontrado;
 
 
-    do{
+        do{
         encontrado=0;
         puts("Introduce el codigo de la plantilla:");
         fgets(codigoPlantilla, sizeof(codigoPlantilla), stdin);
@@ -133,6 +133,7 @@ void crearPlantilla(char *codigo)
         }
         fflush(stdin);
     }while(encontrado==1);
+
 
 
     strcpy(plantillas[numero+1].codigo_usuario,codigo);
@@ -156,5 +157,29 @@ void crearPlantilla(char *codigo)
     guardarDatosPlantilla(plantillas,elementos);
 }
 
+void BorrarPlantilla(){
+int cont;
+Plantilla *plantillas=obtenerPlantillas();
+    int numero= nPlantillas();
+    char codigoPlantilla[4];
+    int encontrado;
 
+ do{
+        encontrado=0;
+        puts("Introduce el codigo de la plantilla:");
+        fgets(codigoPlantilla, sizeof(codigoPlantilla), stdin);
+        for(cont=0;cont<numero;cont++)
+        {
+            if(strcmp(codigoPlantilla,plantillas[cont].codigo)==0)
+            {
+                strcpy(plantillas[cont].codigo,"xx");
+                encontrado=1;
+            }
+        }
+        fflush(stdin);
+    }while(encontrado==0);
+guardarDatosPlantilla(plantillas,numero);
+
+
+}
 
