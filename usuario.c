@@ -4,13 +4,17 @@
 #include "fichero.h"
 
 
-void tasar(Jugador *jugadores){
+void tasar(Jugador *jugadores,char *codigoPlantilla){
     Conf* configuracion=obtenerConfiguraciones();
     int valor;
-    int codigo;
+    char codigo[3];
+    int codigoEnNumero;
     int contadorJugadores=1;
     int *codigosSelect = (int*) malloc(sizeof(int));
     char eleccion;
+    Jug_plan *jug_plan= (Jug_plan*) malloc(sizeof(Jug_plan));
+
+    fflush(stdin);
 
     valor=configuracion[1].valor;
     do{
@@ -18,34 +22,43 @@ void tasar(Jugador *jugadores){
 
             printf("Introduce el codigo del jugador que deseas fichar ");
             fflush(stdin);
-            scanf("%i",&codigo);
-            int precio=jugadores[codigo-1].precio;
+            fgets(codigo,3,stdin);
+            codigoEnNumero=atoi(codigo);
+
+            int precio=jugadores[codigoEnNumero-1].precio;
             codigosSelect = (int*) realloc(codigosSelect, (contadorJugadores)*sizeof(int));
-            int sehaencontrado=comprobarQueNoEsta(codigo,codigosSelect,contadorJugadores);
+            jug_plan = (Jug_plan*) realloc(jug_plan, (contadorJugadores)*sizeof(Jug_plan));
+
+
+            int sehaencontrado=comprobarQueNoEsta(codigoEnNumero,codigosSelect,contadorJugadores);
             if(sehaencontrado==0)
             {
                 if(valor-precio>=0)
                 {
-                    codigosSelect[contadorJugadores-1]=codigo;
+                    codigosSelect[contadorJugadores-1]=codigoEnNumero;
+                    strcpy(jug_plan[contadorJugadores-1].codigo_jugador,codigo);
+                    strcpy(jug_plan[contadorJugadores-1].codigo_plantilla,codigoPlantilla);
                     contadorJugadores++;
                     valor=valor-precio;
                 }
                 else{
-                    printf("No tienes dinero para ficharle \n",codigo);
+                    printf("No tienes dinero para ficharle",codigo);
                 }
 
             }
             else{
-                printf("Ya tienes al jugador %i en tu plantilla \n",codigo);
+                printf("Ya tienes al jugador %i en tu plantilla",codigo);
             }
 
 
-        printf("Tienes %i euros \n",valor);
+        printf("Tienes %i euros \n\n",valor);
         puts("Introduce n si no desea seguir fichando en caso contrario introduzca otro caracter ");
         fflush(stdin);
         eleccion=getchar();
 
     }while(valor>0 && eleccion!='n');
+
+    guardarDatosJugadorPlantilla(jug_plan,contadorJugadores-1);
 
 }
 
@@ -87,7 +100,7 @@ void imprimirListaJugadores(Jugador *jugadores,int tamano){
 
 }
 
-void crearPlantilla()
+void crearPlantilla(char *codigo)
 {
     int cont;
     char nombre[60];
@@ -117,14 +130,15 @@ void crearPlantilla()
     }while(encontrado==1);
 
 
-    strcpy(plantillas[numero+1].codigo_usuario,"01");
-    strcpy(plantillas[numero+1].codigo_usuario,codigoPlantilla);
+    strcpy(plantillas[numero+1].codigo_usuario,codigo);
+    strcpy(plantillas[numero+1].codigo,codigoPlantilla);
     strcpy(plantillas[numero+1].nombre,nombre);
 
     Jugador *jugadores=obtenerJugadores();
     int numeroJugadores=nJugadores();
+
     imprimirListaJugadores(jugadores,numeroJugadores);
-    tasar(jugadores);
+    tasar(jugadores,codigoPlantilla);
 
 }
 
