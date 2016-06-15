@@ -9,6 +9,9 @@
  * 
  */
 
+// Cabecera: void registrar()
+// Precondicion:
+// Poscondicion: agrega un nuevo usuario con los datos introducidos por teclado
 void registrar() {
     Usuario* u = obtenerUsuarios();
     int elementos = nUsuarios();
@@ -16,23 +19,18 @@ void registrar() {
     char nombre[21];
     char login[7];
     char pass[7];
-    char tipo[14];
     fflush(stdin);
-    fpurge(stdin);
     puts("Introduce codigo");
     fgets(codigo, 3, stdin);
     fflush(stdin);
-    fpurge(stdin);
     puts("Introduce nombre");
     fgets(nombre, 21, stdin);
     strtok(nombre, "\n");
     fflush(stdin);
-    fpurge(stdin);
     puts("Introduce login");
     fgets(login, 7, stdin);
     strtok(login, "\n");
     fflush(stdin);
-    fpurge(stdin);
     puts("Introduce password");
     fgets(pass, 7, stdin);
     strtok(pass, "\n");
@@ -45,6 +43,9 @@ void registrar() {
     guardarDatosUsuario(u, elementos);
 }
 
+// Cabecera: void acceder(Usuario usuario)
+// Precondicion:
+// Poscondicion: muestra el menu correspondiente al tipo de usuario
 void acceder(Usuario usuario) {
     Usuario *u = obtenerUsuarios();
     int elementos = nUsuarios();
@@ -74,12 +75,10 @@ int main() {
             char pass[7];
             Usuario usuario;
             fflush(stdin);
-            fpurge(stdin);
             puts("Introduce login");
             fgets(login, 7, stdin);
             strtok(login, "\n");
             fflush(stdin);
-            fpurge(stdin);
             puts("Introduce password");
             fgets(pass, 7, stdin);
             strtok(pass, "\n");
@@ -93,3 +92,4 @@ int main() {
         }
     } while (continuar == 1);
 }
+

@@ -38,7 +38,6 @@ void menuAdministrador() {
         printf("3.- Configuracion\n");
         printf("4.- Salir del programa\n");
         fflush(stdin);
-        fpurge(stdin);
         opcion = getchar();
 
         if (opcion == '1') {
@@ -69,7 +68,6 @@ static void menuEquipos(Equipo *e, int* numEq) {
         printf("4.- Eliminar equipo\n");
         printf("5.- Volver\n");
         fflush(stdin);
-fpurge(stdin);
         opcion = getchar();
 
         if (opcion == '1') {
@@ -140,7 +138,7 @@ static void agregarEquipo(Equipo *e, int* numEq) {
 static void eliminarEquipo(Equipo *e, int* numEq) {
     char codigo[3];
     int i;
-    fpurge(stdin);fpurge(stdin);
+    fflush(stdin)
     puts("Introduce codigo:");
     fgets(codigo, 3, stdin);
     for (i = 0; i < *numEq; i++) {
@@ -166,7 +164,7 @@ static void menuUsuarios(Usuario *u, int* numUs) {
         printf("3.- Agregar usuario\n");
         printf("4.- Eliminar usuario\n");
         printf("5.- Volver\n");
-        fflush(stdin);fpurge(stdin);
+        fflush(stdin);
 
         opcion = getchar();
 
@@ -199,8 +197,8 @@ static void listarUsuarios(Usuario *u, int* numUs) {
 static void modificarUsuario(Usuario *u, int* numUs) {
     char codigo[3];
     char nombre[21];
-    char login[6];
-    char pass[6];
+    char login[7];
+    char pass[7];
     char tipo[14];
     fflush(stdin);fpurge(stdin);
     puts("Introduce codigo");
@@ -215,11 +213,11 @@ static void modificarUsuario(Usuario *u, int* numUs) {
     strtok(tipo, "\n");
     fflush(stdin);fpurge(stdin);
     puts("Introduce login");
-    fgets(login, 6, stdin);
+    fgets(login, 7, stdin);
     strtok(login, "\n");
     fflush(stdin);fpurge(stdin);
     puts("Introduce password");
-    fgets(pass, 6, stdin);
+    fgets(pass, 7, stdin);
     strtok(pass, "\n");
     int i;
     for (i = 0; i < *numUs; i++) {
@@ -238,8 +236,8 @@ static void modificarUsuario(Usuario *u, int* numUs) {
 static void agregarUsuario(Usuario *u, int* numUs) {
     char codigo[3];
     char nombre[21];
-    char login[6];
-    char pass[6];
+    char login[7];
+    char pass[7];
     char tipo[14];
     fflush(stdin);fpurge(stdin);
     puts("Introduce codigo");
@@ -254,11 +252,11 @@ static void agregarUsuario(Usuario *u, int* numUs) {
     strtok(tipo, "\n");
     fflush(stdin);fpurge(stdin);
     puts("Introduce login");
-    fgets(login, 6, stdin);
+    fgets(login, 7, stdin);
     strtok(login, "\n");
     fflush(stdin);fpurge(stdin);
     puts("Introduce password");
-    fgets(pass, 6, stdin);
+    fgets(pass, 7, stdin);
     strtok(pass, "\n");
     strcpy(u[*numUs].codigo, codigo);
     strcpy(u[*numUs].nombre, nombre);
@@ -300,7 +298,7 @@ static void menuConfiguracion(Conf* c) {
         printf("3.- Cambiar presupuesto por defecto\n");
         printf("4.- Cambiar jugadores maximos\n");
         printf("5.- Volver\n");
-        fflush(stdin);fpurge(stdin);
+        fflush(stdin);
 
         opcion = getchar();
 
@@ -330,7 +328,7 @@ static void verConfiguracion(Conf* c) {
 // Poscondicion: actualiza el parametro max equipos
 static void cambiarMaxEquipos(Conf* c) {
     puts("Introduce numero maximo de equipos:");
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     scanf("%d", &c[0].valor);
 }
 
@@ -339,7 +337,7 @@ static void cambiarMaxEquipos(Conf* c) {
 // Poscondicion: actualiza el parametro presupuesto def
 static void cambiarPresupuestoDef(Conf* c) {
     puts("Introduce presupuesto por defecto:");
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     scanf("%d", &c[1].valor);
 }
 
@@ -348,6 +346,6 @@ static void cambiarPresupuestoDef(Conf* c) {
 // Poscondicion: actualiza el parametro max jugadores
 static void cambiarMaxJugadores(Conf* c) {
     puts("Introduce numero maximo de jugadores:");
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     scanf("%d", &c[2].valor);
 }
