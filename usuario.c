@@ -3,6 +3,7 @@
 #include "usuario.h"
 #include "fichero.h"
 
+Equipo *equipos;
 Plantilla *plantillas;
 int nplantillas;
 Jugador *jugadores;
@@ -10,16 +11,52 @@ int crearplant;
 Jug_plan *jug_plan;
 int contadorJugadores;
 Conf* configuracion;
+int tamanoequipos;
 
 
+// Cabecera: void menuUsuario()
+// Precondicion:
+// Poscondicion: muestra menu inicial usuario
+void menuUsuario(char *codigo) {
+    char opcion;
+    inicializarDatos();
+
+    do {
+        printf("\n MENU PARTICIPANTE \n");
+        puts("");
+        printf("1.- Crear Plantilla\n");
+        printf("2.- Borrar Plantilla\n");
+        printf("3.- Salir del programa\n");
+        fflush(stdin);
+        fpurge(stdin);
+        opcion = getchar();
+
+        if (opcion == '1') {
+            crearPlantilla(codigo);
+        } else if (opcion == '2') {
+            BorrarPlantilla();
+        }
+    } while (opcion != '3');
+    salvarDatos();
+    exit(0);
+}
+
+// Cabecera: void inicializarDatos()
+// Precondicion:
+// Poscondicion: inicializa todo los atributos
 void inicializarDatos(){
     crearplant=0;
     *plantillas=obtenerPlantillas();
     nplantillas= nPlantillas();
     *jugadores=obtenerJugadores();
     configuracion=obtenerConfiguraciones();
+    *equipos=obtenerEquipos();
+    tamanoequipos=nEquipos();
 }
 
+// Cabecera: void salvarDatos()
+// Precondicion:
+// Poscondicion: guarda los datos almacenados en los atributos
 void salvarDatos(){
     guardarDatosPlantilla(plantillas,nplantillas);
     if(crearplant==1)
@@ -30,6 +67,9 @@ void salvarDatos(){
 
 }
 
+// Cabecera: void tasar()
+// Precondicion:
+// Poscondicion: tasar los jugadores de las plantillas
 void tasar(char *codigoPlantilla,int *presupuesto,int *valoracion){
     crearplant=1;
     int valor;
@@ -91,6 +131,9 @@ void tasar(char *codigoPlantilla,int *presupuesto,int *valoracion){
 
 }
 
+// Cabecera: void comprobarQueNoEsta()
+// Precondicion:
+// Poscondicion: Comprobar que un int no esta en un vector de int
 int comprobarQueNoEsta(int codigo,int *vector,int tam)
 {
     int i,sehaencontrado=0;
@@ -103,11 +146,13 @@ int comprobarQueNoEsta(int codigo,int *vector,int tam)
     return sehaencontrado;
 }
 
-void imprimirListaJugadores(Jugador *jugadores,int tamano){
+// Cabecera: void imprimirListaJugadores(Jugador *jugadores,int tamano)
+// Precondicion:
+// Poscondicion: Lista todos los jugadores
+void imprimirListaJugadores(int tamano){
 
-    int contador,contadorEq,tamanoequipos;
-    Equipo *equipos=obtenerEquipos();
-    tamanoequipos=nEquipos();
+    int contador,contadorEq;
+
     int codigo_equipo;
     puts("---JUGADORES---");
     puts("Codigo Nombre Equipo Precio Valoracion");
@@ -128,7 +173,9 @@ void imprimirListaJugadores(Jugador *jugadores,int tamano){
     }
 
 }
-
+// Cabecera: void crearPlantilla(char *codigo)
+// Precondicion: codigo es el codigo de usuario
+// Poscondicion: Crea una plantila
 void crearPlantilla(char *codigo)
 {
     int cont;
@@ -166,7 +213,7 @@ void crearPlantilla(char *codigo)
     int numeroJugadores=nJugadores();
     int valoracion;
     int presupuesto;
-    imprimirListaJugadores(jugadores,numeroJugadores);
+    imprimirListaJugadores(numeroJugadores);
     tasar(codigoPlantilla,&presupuesto,&valoracion);
 
     plantillas[numero+1].presupuesto=presupuesto;
@@ -175,6 +222,9 @@ void crearPlantilla(char *codigo)
     nplantillas=nplantillas+1;
 }
 
+// Cabecera: void BorrarPlantilla()
+// Precondicion:
+// Poscondicion: Borra una plantilla
 void BorrarPlantilla(){
     int cont;
 
