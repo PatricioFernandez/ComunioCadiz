@@ -3,15 +3,15 @@
 #include "usuario.h"
 #include "fichero.h"
 
-Equipo *equipos;
-Plantilla *plantillas;
-int nplantillas;
-Jugador *jugadores;
-int crearplant;
-Jug_plan *jug_plan;
-int contadorJugadores;
-Conf* configuracion;
-int tamanoequipos;
+static Equipo *equipos;
+static Plantilla *plantillas;
+static int nplantillas;
+static Jugador *jugadores;
+static int crearplant;
+static Jug_plan *jug_plan;
+static int contadorJugadores;
+static Conf* configuracion;
+static int tamanoequipos;
 
 
 // Cabecera: void menuUsuario()
@@ -28,7 +28,7 @@ void menuUsuario(char *codigo) {
         printf("2.- Borrar Plantilla\n");
         printf("3.- Salir del programa\n");
         fflush(stdin);
-        fpurge(stdin);
+
         opcion = getchar();
 
         if (opcion == '1') {
@@ -46,11 +46,11 @@ void menuUsuario(char *codigo) {
 // Poscondicion: inicializa todo los atributos
 void inicializarDatos(){
     crearplant=0;
-    *plantillas=obtenerPlantillas();
+    plantillas=obtenerPlantillas();
     nplantillas= nPlantillas();
-    *jugadores=obtenerJugadores();
+    jugadores=obtenerJugadores();
     configuracion=obtenerConfiguraciones();
-    *equipos=obtenerEquipos();
+    equipos=obtenerEquipos();
     tamanoequipos=nEquipos();
 }
 
@@ -78,7 +78,7 @@ void tasar(char *codigoPlantilla,int *presupuesto,int *valoracion){
     contadorJugadores=1;
     int *codigosSelect = (int*) malloc(sizeof(int));
     char eleccion;
-    *jug_plan= (Jug_plan*) malloc(sizeof(Jug_plan));
+    jug_plan= (Jug_plan*) malloc(sizeof(Jug_plan));
     *valoracion=0;
     fflush(stdin);
 
@@ -187,12 +187,14 @@ void crearPlantilla(char *codigo)
     char codigoPlantilla[4];
     int encontrado;
 
+    plantillas = (Plantilla*) realloc(plantillas, (nplantillas)*sizeof(int));
+
 
         do{
         encontrado=0;
         puts("Introduce el codigo de la plantilla:");
         fgets(codigoPlantilla, sizeof(codigoPlantilla), stdin);
-        for(cont=0;cont<numero;cont++)
+        for(cont=0;cont<nplantillas;cont++)
         {
             if(strcmp(codigoPlantilla,plantillas[cont].codigo)==0)
             {
@@ -205,9 +207,9 @@ void crearPlantilla(char *codigo)
 
 
 
-    strcpy(plantillas[numero+1].codigo_usuario,codigo);
-    strcpy(plantillas[numero+1].codigo,codigoPlantilla);
-    strcpy(plantillas[numero+1].nombre,nombre);
+    strcpy(plantillas[nplantillas+1].codigo_usuario,codigo);
+    strcpy(plantillas[nplantillas+1].codigo,codigoPlantilla);
+    strcpy(plantillas[nplantillas+1].nombre,nombre);
 
 
     int numeroJugadores=nJugadores();
@@ -216,8 +218,8 @@ void crearPlantilla(char *codigo)
     imprimirListaJugadores(numeroJugadores);
     tasar(codigoPlantilla,&presupuesto,&valoracion);
 
-    plantillas[numero+1].presupuesto=presupuesto;
-    plantillas[numero+1].puntuacion=valoracion;
+    plantillas[nplantillas+1].presupuesto=presupuesto;
+    plantillas[nplantillas+1].puntuacion=valoracion;
 
     nplantillas=nplantillas+1;
 }
@@ -235,7 +237,7 @@ void BorrarPlantilla(){
             encontrado=0;
             puts("Introduce el codigo de la plantilla:");
             fgets(codigoPlantilla, sizeof(codigoPlantilla), stdin);
-            for(cont=0;cont<numero;cont++)
+            for(cont=0;cont<nplantillas;cont++)
             {
                 if(strcmp(codigoPlantilla,plantillas[cont].codigo)==0)
                 {
