@@ -6,8 +6,8 @@ typedef struct{
     char codigo[3];
     char nombre[21];
     char tipo[14];
-    char login[6];
-    char pass[6];
+    char login[7];
+    char pass[7];
 }Usuario;
 
 typedef struct{
@@ -16,7 +16,7 @@ typedef struct{
 }Equipo;
 
 typedef struct{
-    char codigo[3];
+    char codigo[4];
     char codigo_equipo[3];
     char nombre[21];
     int precio;
@@ -53,7 +53,7 @@ void guardarDatosUsuario(Usuario* usuarios, int elementos);
 void guardarDatosPlantilla(Plantilla* plantillas, int elementos);
 void guardarDatosJugadorPlantilla(Jug_plan* jug_plan, int elementos);
 void guardarDatosConf(Conf* conf, int elementos);
-char* loguear(char* logUsuario, char* passUsuario);
+Usuario loguear(char* logUsuario, char* passUsuario);
 int nUsuarios();
 int nEquipos();
 int nJugadores();
