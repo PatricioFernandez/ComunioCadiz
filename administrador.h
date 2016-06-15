@@ -3,5 +3,6 @@
 
 void menuAdministrador();
 
+
 #endif	/* ADMINISTRADOR_H */
 
