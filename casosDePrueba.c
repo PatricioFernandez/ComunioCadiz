@@ -6,39 +6,38 @@
  
  
  */
+
 int main(){
-    
-    
     puts("### MODULO: fichero, FUNCION: loguear ###");
-    char *cod = loguear("admin","jp1234");
-    if(strcmp(cod, "00") != 0){
-        printf("Usaurio existente, contaseña correcta, resultado: OK\n");
+    
+    if(strcmp(loguear("admin","jp1234").codigo, "00") != 0){
+        printf("Usuario existente, contraseña correcta, resultado: OK\n");
     }else{
-        printf("Usaurio existente, contaseña correcta, resultado: ERROR\n");
+        printf("Usuario existente, contraseña correcta, resultado: ERROR\n");
     }
-    cod = loguear("admin","jp4321");
-    if(strcmp(cod, "00") == 0){
-        printf("Usaurio existente, contaseña erronea, resultado: OK\n");
+    
+    if(strcmp(loguear("admin","jp134").codigo, "00") == 0){
+        printf("Usuario existente, contraseña incorrecta, resultado: OK\n");
     }else{
-        printf("Usaurio existente, contaseña erronea, resultado: ERROR\n");
+        printf("Usuario existente, contraseña incorrecta, resultado: ERROR\n");
     }
-    cod = loguear("croni","jp1234");
-    if(strcmp(cod, "00") != 0){
-        printf("Usaurio existente, contaseña de otro usuario, resultado: OK\n");
+    
+    if(strcmp(loguear("admin","pl1243").codigo, "00") == 0){
+        printf("Usuario existente, contraseña de otro usuario, resultado: OK\n");
     }else{
-        printf("Usaurio existente, contaseña de otro usuario, resultado: ERROR\n");
+        printf("Usuario existente, contraseña de otro usuario, resultado: ERROR\n");
     }
-    cod = loguear("croni","jp1234");
-    if(strcmp(cod, "00") != 0){
-        printf("Usaurio existente, contaseña de otro usuario, resultado: OK\n");
+    
+    if(strcmp(loguear("asd","asd").codigo, "00") == 0){
+        printf("Usuario inexistente, contraseña inexistente, resultado: OK\n");
     }else{
-        printf("Usaurio existente, contaseña de otro usuario, resultado: ERROR\n");
+        printf("Usuario inexistente, contraseña inexistente, resultado: ERROR\n");
     }
-    cod = loguear("","");
-    if(strcmp(cod, "00") == 0){
-        printf("Usaurio vacio, contaseña vacia, resultado: OK\n");
+    
+    if(strcmp(loguear("","").codigo, "00") == 0){
+        printf("Usuario vacio, contraseña vacia, resultado: OK\n");
     }else{
-        printf("Usaurio vacio, contaseña vacia, resultado: ERROR\n");
+        printf("Usuario vacio, contraseña vacia, resultado: ERROR\n");
     }
     
     return 0;
