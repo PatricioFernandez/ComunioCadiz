@@ -3,16 +3,42 @@
 #include "usuario.h"
 #include "fichero.h"
 
+Plantilla *plantillas;
+int nplantillas;
+Jugador *jugadores;
+int crearplant;
+Jug_plan *jug_plan;
+int contadorJugadores;
+Conf* configuracion;
 
-void tasar(Jugador *jugadores,char *codigoPlantilla,int *presupuesto,int *valoracion){
-    Conf* configuracion=obtenerConfiguraciones();
+
+void inicializarDatos(){
+    crearplant=0;
+    *plantillas=obtenerPlantillas();
+    nplantillas= nPlantillas();
+    *jugadores=obtenerJugadores();
+    configuracion=obtenerConfiguraciones();
+}
+
+void salvarDatos(){
+    guardarDatosPlantilla(plantillas,nplantillas);
+    if(crearplant==1)
+    {
+            guardarDatosJugadorPlantilla(jug_plan,contadorJugadores-1);
+            crearplant=0;
+    }
+
+}
+
+void tasar(char *codigoPlantilla,int *presupuesto,int *valoracion){
+    crearplant=1;
     int valor;
     char codigo[3];
     int codigoEnNumero;
-    int contadorJugadores=1;
+    contadorJugadores=1;
     int *codigosSelect = (int*) malloc(sizeof(int));
     char eleccion;
-    Jug_plan *jug_plan= (Jug_plan*) malloc(sizeof(Jug_plan));
+    *jug_plan= (Jug_plan*) malloc(sizeof(Jug_plan));
     *valoracion=0;
     fflush(stdin);
 
@@ -60,7 +86,6 @@ void tasar(Jugador *jugadores,char *codigoPlantilla,int *presupuesto,int *valora
     }while(valor>0 && eleccion!='n');
 
 
-    guardarDatosJugadorPlantilla(jug_plan,contadorJugadores-1);
     *presupuesto=valor;
 
 
@@ -112,9 +137,6 @@ void crearPlantilla(char *codigo)
     puts("¿Como desea llamar a la plantilla?");
     fgets(nombre, sizeof(nombre), stdin);
 
-    Plantilla *plantillas=obtenerPlantillas();
-    int numero= nPlantillas();
-
     char codigoPlantilla[4];
     int encontrado;
 
@@ -140,45 +162,41 @@ void crearPlantilla(char *codigo)
     strcpy(plantillas[numero+1].codigo,codigoPlantilla);
     strcpy(plantillas[numero+1].nombre,nombre);
 
-    Jugador *jugadores=obtenerJugadores();
+
     int numeroJugadores=nJugadores();
     int valoracion;
     int presupuesto;
     imprimirListaJugadores(jugadores,numeroJugadores);
-    tasar(jugadores,codigoPlantilla,&presupuesto,&valoracion);
+    tasar(codigoPlantilla,&presupuesto,&valoracion);
 
     plantillas[numero+1].presupuesto=presupuesto;
     plantillas[numero+1].puntuacion=valoracion;
 
-    int elementos=numero+1;
-
-    printf("presupuesto %i, valoracion %i",plantillas[numero+1].presupuesto,plantillas[numero+1].puntuacion);
-
-    guardarDatosPlantilla(plantillas,elementos);
+    nplantillas=nplantillas+1;
 }
 
 void BorrarPlantilla(){
-int cont;
-Plantilla *plantillas=obtenerPlantillas();
-    int numero= nPlantillas();
-    char codigoPlantilla[4];
-    int encontrado;
+    int cont;
 
- do{
-        encontrado=0;
-        puts("Introduce el codigo de la plantilla:");
-        fgets(codigoPlantilla, sizeof(codigoPlantilla), stdin);
-        for(cont=0;cont<numero;cont++)
-        {
-            if(strcmp(codigoPlantilla,plantillas[cont].codigo)==0)
+        char codigoPlantilla[4];
+        int encontrado;
+
+     do{
+            encontrado=0;
+            puts("Introduce el codigo de la plantilla:");
+            fgets(codigoPlantilla, sizeof(codigoPlantilla), stdin);
+            for(cont=0;cont<numero;cont++)
             {
-                strcpy(plantillas[cont].codigo,"xx");
-                encontrado=1;
+                if(strcmp(codigoPlantilla,plantillas[cont].codigo)==0)
+                {
+                    strcpy(plantillas[cont].codigo,"xx");
+                    encontrado=1;
+                    nplantillas=nplantillas-1;
+                }
             }
-        }
-        fflush(stdin);
-    }while(encontrado==0);
-guardarDatosPlantilla(plantillas,numero);
+            fflush(stdin);
+        }while(encontrado==0);
+
 
 
 }
