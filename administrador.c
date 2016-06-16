@@ -99,10 +99,10 @@ static void listarEquipos(Equipo *e, int* numEq) {
 static void modificarEquipo(Equipo *e, int* numEq) {
     char codigo[3];
     char nombre[21];
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     puts("Introduce codigo");
     fgets(codigo, 3, stdin);
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     puts("Introduce nombre");
     fgets(nombre, 21, stdin);
     strtok(nombre, "\n");
@@ -120,10 +120,10 @@ static void modificarEquipo(Equipo *e, int* numEq) {
 static void agregarEquipo(Equipo *e, int* numEq) {
     char codigo[3];
     char nombre[21];
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     puts("Introduce codigo");
     fgets(codigo, 3, stdin);
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     puts("Introduce nombre");
     fgets(nombre, 21, stdin);
     strtok(nombre, "\n");
@@ -138,7 +138,7 @@ static void agregarEquipo(Equipo *e, int* numEq) {
 static void eliminarEquipo(Equipo *e, int* numEq) {
     char codigo[3];
     int i;
-    fflush(stdin)
+    fflush(stdin);
     puts("Introduce codigo:");
     fgets(codigo, 3, stdin);
     for (i = 0; i < *numEq; i++) {
@@ -200,22 +200,22 @@ static void modificarUsuario(Usuario *u, int* numUs) {
     char login[7];
     char pass[7];
     char tipo[14];
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     puts("Introduce codigo");
     fgets(codigo, 3, stdin);
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     puts("Introduce nombre");
     fgets(nombre, 21, stdin);
     strtok(nombre, "\n");
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     puts("Introduce tipo");
     fgets(tipo, 14, stdin);
     strtok(tipo, "\n");
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     puts("Introduce login");
     fgets(login, 7, stdin);
     strtok(login, "\n");
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     puts("Introduce password");
     fgets(pass, 7, stdin);
     strtok(pass, "\n");
@@ -239,22 +239,22 @@ static void agregarUsuario(Usuario *u, int* numUs) {
     char login[7];
     char pass[7];
     char tipo[14];
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     puts("Introduce codigo");
     fgets(codigo, 3, stdin);
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     puts("Introduce nombre");
     fgets(nombre, 21, stdin);
     strtok(nombre, "\n");
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     puts("Introduce tipo");
     fgets(tipo, 14, stdin);
     strtok(tipo, "\n");
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     puts("Introduce login");
     fgets(login, 7, stdin);
     strtok(login, "\n");
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     puts("Introduce password");
     fgets(pass, 7, stdin);
     strtok(pass, "\n");
@@ -272,7 +272,7 @@ static void agregarUsuario(Usuario *u, int* numUs) {
 static void eliminarUsuario(Usuario *u, int* numUs) {
     char codigo[3];
     int i;
-    fflush(stdin);fpurge(stdin);
+    fflush(stdin);
     puts("Introduce codigo:");
     fgets(codigo, 3, stdin);
     for (i = 0; i < *numUs; i++) {

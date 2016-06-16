@@ -3,16 +3,16 @@
 #include <stdlib.h>
 #include "fichero.h"
 
-int ppal(){
+void menuCronista(){
 int op;
 Equipo *equipo=obtenerEquipos();
 Jugador *jugadores=obtenerJugadores();
-
+do{
 printf("Introduzca la operacion a realizar:\n 1.-Listar Equipos.\n 2.-Valorar Jugadores.\n 3.-Salir del programa.\n");
 scanf("%d",&op);
 if(op==1) listarEquipos2(equipo);
 if (op==2) valorarEquipos(equipo,jugadores);
-
+}while(op!=3);
 return 0;
 }
 
@@ -24,6 +24,7 @@ se elija la opción de listar equipos.
 postondicion:lista los equipos.*/
 
 void listarEquipos2(Equipo *equipos){
+fflush(stdin);
 int i,n;
 n=nEquipos();
 

@@ -1,1 +1,20 @@
-01 Athletic_de_Bilbao02 Atlético_de_Madrid03 Barcelona04 Betis05 Celta06 Deportivo_de_la_Coruña07 Eibar08 Espanyol09 Getafe10 Granada11 Las_Palmas12 Levante13 Málaga14 Rayo_Vallecano15 Real_Madrid16 Real_Sociedad17 Sevilla18 Sporting19 Valencia20 Villarreal
+01 Athletic_de_Bilbao
+02 Atletico_de_Madrid
+03 Barcelona
+04 Betis
+05 Celta
+06 Deportivo
+07 Eibar
+08 Espanyol
+09 Getafe
+10 Granada
+11 Las_Palmas
+12 Levante
+13 Malaga
+14 Rayo_Vallecano
+15 Real_Madrid
+16 Real_Sociedad
+17 Sevilla
+18 Sporting
+19 Valencia
+20 Villarreal

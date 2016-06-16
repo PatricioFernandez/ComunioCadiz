@@ -3,10 +3,11 @@
 #include <string.h>
 #include "fichero.h"
 #include "administrador.h"
+#include "Cronista.h"
 
 /*
- * 
- * 
+ *
+ *
  */
 
 // Cabecera: void registrar()
@@ -14,14 +15,26 @@
 // Poscondicion: agrega un nuevo usuario con los datos introducidos por teclado
 void registrar() {
     Usuario* u = obtenerUsuarios();
-    int elementos = nUsuarios();
+    int elementos = nUsuarios(),encontrado,cont;
     char codigo[3];
     char nombre[21];
     char login[7];
     char pass[7];
     fflush(stdin);
-    puts("Introduce codigo");
-    fgets(codigo, 3, stdin);
+    do{
+        encontrado=0;
+         puts("Introduce codigo");
+         fgets(codigo, 3, stdin);
+        for(cont=0;cont<elementos;cont++)
+        {
+            if(strcmp(u[cont].codigo,codigo)==0)
+            {
+                puts("Ese codigo ya existe,introduzca otro.");
+                encontrado=1;
+            }
+        }
+        fflush(stdin);
+    }while(encontrado==1);
     fflush(stdin);
     puts("Introduce nombre");
     fgets(nombre, 21, stdin);
@@ -48,14 +61,14 @@ void registrar() {
 // Poscondicion: muestra el menu correspondiente al tipo de usuario
 void acceder(Usuario usuario) {
     Usuario *u = obtenerUsuarios();
-    int elementos = nUsuarios();
-    for (int i = 0; i < elementos; i++) {
+    int elementos = nUsuarios(),i;
+    for (i = 0; i < elementos; i++) {
         if (strcmp(u[i].codigo, usuario.codigo) == 0 && strcmp(u[i].tipo, "administrador") == 0) {
             menuAdministrador();
         } else if (strcmp(u[i].codigo, usuario.codigo) == 0 && strcmp(u[i].tipo, "participante") == 0) {
-            //MENU PRINCIPAL PARTICIPANTE
+
         } else if (strcmp(u[i].codigo, usuario.codigo) == 0 && strcmp(u[i].tipo, "cronista") == 0) {
-            //MENU PRINCIPAL CRONISTA
+            menuCronista();
         }
     }
 }
