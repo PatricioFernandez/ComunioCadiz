@@ -3,6 +3,11 @@
 #include <stdlib.h>
 #include "fichero.h"
 
+/*cabecera: void menuCronista()
+precondincion:Ser llamado por el usuario cronista.
+postcondicion:Mostrar menu.*/
+
+
 void menuCronista(){
 int op;
 Equipo *equipo=obtenerEquipos();
