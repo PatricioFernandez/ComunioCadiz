@@ -4,6 +4,7 @@
 #include "fichero.h"
 #include "administrador.h"
 #include "Cronista.h"
+#include "usuario.h"
 
 /*
  *
@@ -66,7 +67,7 @@ void acceder(Usuario usuario) {
         if (strcmp(u[i].codigo, usuario.codigo) == 0 && strcmp(u[i].tipo, "administrador") == 0) {
             menuAdministrador();
         } else if (strcmp(u[i].codigo, usuario.codigo) == 0 && strcmp(u[i].tipo, "participante") == 0) {
-
+            menuUsuario(usuario.codigo);
         } else if (strcmp(u[i].codigo, usuario.codigo) == 0 && strcmp(u[i].tipo, "cronista") == 0) {
             menuCronista();
         }
@@ -105,4 +106,3 @@ int main() {
         }
     } while (continuar == 1);
 }
-
