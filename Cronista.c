@@ -13,11 +13,15 @@ scanf("%d",&op);
 if(op==1) listarEquipos2(equipo);
 if (op==2) valorarEquipos(equipo,jugadores);
 
-
-
-
 return 0;
 }
+
+
+
+/*cabecera: void listarEquipos2(Equipo *equipos)
+precondicion: la funcion ppal, pasa el parametro que esta funcion requiere,siempre y cuando
+se elija la opción de listar equipos.
+postondicion:lista los equipos.*/
 
 void listarEquipos2(Equipo *equipos){
 int i,n;
@@ -28,6 +32,12 @@ for(i=0;i<n;i++){
     printf("%s\n",equipos[i].nombre);
 }
 }
+
+/*cabecera:void valorarEquipos(Equipo *equipos,Jugador *jugadores)
+precondicion:la funccion ppal,pasa el parametro que esta función requiere, siempre y cuando
+se elija la opción de valorar equipos.
+postcondicion:lista los equipos, y nos muestra los jugadores al elegir el equipo deseado a valorar,
+finalmente introducimos la nueva valoracion de los jugadores.*/
 
 void valorarEquipos(Equipo *equipos,Jugador *jugadores){
 fflush(stdin);
@@ -52,21 +62,17 @@ p++;
 
 }
 }
-printf("\nIntroduzca el codigo del jugador,al que desea modificar la valoracion:");
 fflush(stdin);
+printf("\nIntroduzca el codigo del jugador,al que desea modificar la valoracion:");
 gets(c);
-for(p=0;p<t;){
-if(strcmp(jugadores[p].codigo_equipo,j)==0 && strcmp(jugadores[p].codigo,c)==0){
+for(p=0;p<t;p++){
+if(strcmp(jugadores[p].codigo,c)==0){
 printf("Introduzca la nueva valoracion:");
 scanf("%d",&valor);
 jugadores[p].valoracion=jugadores[p].valoracion+valor;
-guardarDatosJugador(jugadores,n);
 printf("%s %s %d\n",jugadores[p].codigo,jugadores[p].nombre,jugadores[p].valoracion);
-p++;
-}else{
-p++;
-}
-}
+    }
+    }
 fflush(stdin);
 printf("¿Quieres valorar a otro jugador,S/N?");
 r=getchar();
